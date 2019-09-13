@@ -1,0 +1,17 @@
+git bisect start
+
+git bisect bad
+
+git bisect good <tag or sha>
+
+git bisect reset
+
+
+OPTIONS
+git bisect skip
+(let git pick an adjacent commit, for instance, when a commit is untestable)
+
+git bisect log
+
+git bisect visualize
+
