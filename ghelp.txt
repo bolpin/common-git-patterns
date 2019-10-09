@@ -1,5 +1,45 @@
-Master                        Feature
-======                        =======
+REVERT A MERGE TO MASTER, AFTER IT HAS BEEN PUSHED
+
+given:
+
+  *   16d572226 (origin/master, origin/HEAD) Merge branch 'adp_free_trial_buy_card_2'  Brian, 79 minutes ago
+  |\
+  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button on buy card when asset is not Essentials (a.k.a. Main)  Brian, 30 hours ago
+  | * b58f7db11 adding free trial option to adp buy card (testing TBD)  Brian, 4 days ago
+  |/
+  *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master'  Jeshua, 2 hours ago
+
+Let's say I pushed this, but found an issue on STAGE on my
+adp_free_trial_buy_card_2 branch.  I now need to get that merge off, in a way
+that doesn't involve a force push (and thus screw up others that may be
+working off 16d572226).  The process is:
+
+  git revert -m 1 16d572226
+
+"-m 1" indicates that I want to revert to the tree of the first parent prior to the merge.
+
+The result is a new commit: f18dc5691
+
+  * f18dc5691 (HEAD -> master, origin/master, origin/HEAD) Revert "Merge branch 'adp_free_trial_buy_card_2'"  Brian, 57 minutes ago
+  *   16d572226 Merge branch 'adp_free_trial_buy_card_2'  Brian, 2 hours ago
+  |\
+  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button on buy card when asset is not Essentials (a.k.a. Main)  Brian, 31 hours ago
+  | * b58f7db11 adding free trial option to adp buy card (testing TBD)  Brian, 4 days ago
+  |/
+  *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master' Jeshua, 3 hours ago
+
+which does not differ from the desired commit:
+
+  bolpin ~/src/unisporkal/asset_detail 2.5.3 master f18dc5691 $ git diff 822195aac
+  bolpin ~/src/unisporkal/asset_detail 2.5.3 master f18dc5691 $
+
+yay!
+
+===========================================================================================
+
+  Master                        Feature
+  Branch                        Branch
+  ======                        =======
 
 WHEN DONE -- AFTER STORY IS ACCEPTED AND REVIEWED!
 
@@ -38,39 +78,3 @@ BLOW AWAY LOCAL, UNPUSHED CHANGES
   git reset --hard origin/master
 
 
-REVERT A MERGE TO MASTER, AFTER IT HAS BEEN PUSHED
-
-given:
-
-  *   16d572226 (origin/master, origin/HEAD) Merge branch 'adp_free_trial_buy_card_2'  Brian, 79 minutes ago
-  |\
-  | * fcfd4e665 (adp_free_trial_buy_card_2) disable button on buy card when asset is not Essentials  Brian, 30 hours ago
-  | * b58f7db11 adding free trial option to adp buy card  Brian, 4 days ago
-  |/
-  *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master'  Jeshua, 2 hours ago
-
-Let's say I pushed this, but found an issue on STAGE on my
-adp_free_trial_buy_card_2 branch.  I now need to get that merge off, in a way
-that doesn't involve a force push (and thus screw up others that may be
-working off 16d572226).  The process is:
-
-  git revert -m 1 16d572226
-
-"-m 1" indicates that I want to revert to the tree of the first parent prior to the merge.
-
-The result is a new commit: f18dc5691
-
-  * f18dc5691 (HEAD -> master, origin/master, origin/HEAD) Revert "Merge branch 'adp_free_trial_buy_card_2'"  Brian, 57 minutes ago
-  *   16d572226 Merge branch 'adp_free_trial_buy_card_2'  Brian, 2 hours ago
-  |\
-  | * fcfd4e665 (adp_free_trial_buy_card_2) disable button on buy card when asset is not Essentials  Brian, 30 hours ago
-  | * b58f7db11 adding free trial option to adp buy card  Brian, 4 days ago
-  |/
-  *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master' Jeshua, 3 hours ago
-
-which does not differ from the desired commit:
-
-  bolpin ~/src/unisporkal/asset_detail 2.5.3 master f18dc5691 $ git diff 822195aac
-  bolpin ~/src/unisporkal/asset_detail 2.5.3 master f18dc5691 $
-
-yay!
