@@ -4,8 +4,8 @@ given:
 
   *   16d572226 (origin/master, origin/HEAD) Merge branch 'adp_free_trial_buy_card_2'  Brian, 79 minutes ago
   |\
-  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button on buy card when asset is not Essentials (a.k.a. Main)  Brian, 30 hours ago
-  | * b58f7db11 adding free trial option to adp buy card (testing TBD)  Brian, 4 days ago
+  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button  Brian, 30 hours ago
+  | * b58f7db11 adding free trial option to adp buy card  Brian, 4 days ago
   |/
   *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master'  Jeshua, 2 hours ago
 
@@ -23,8 +23,8 @@ The result is a new commit: f18dc5691
   * f18dc5691 (HEAD -> master, origin/master, origin/HEAD) Revert "Merge branch 'adp_free_trial_buy_card_2'"  Brian, 57 minutes ago
   *   16d572226 Merge branch 'adp_free_trial_buy_card_2'  Brian, 2 hours ago
   |\
-  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button on buy card when asset is not Essentials (a.k.a. Main)  Brian, 31 hours ago
-  | * b58f7db11 adding free trial option to adp buy card (testing TBD)  Brian, 4 days ago
+  | * fcfd4e665 (adp_free_trial_buy_card_2) disable free trial radio button  Brian, 31 hours ago
+  | * b58f7db11 adding free trial option to adp buy card  Brian, 4 days ago
   |/
   *   822195aac (tag: RFC0099921) Merge branch 'TitleChange' into 'master' Jeshua, 3 hours ago
 
